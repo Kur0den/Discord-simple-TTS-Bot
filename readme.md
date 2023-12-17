@@ -33,6 +33,6 @@ Python3.11.4 で動作確認済み
 -   `/disconnect`
     VC から切断します
 
-質問とか？あれば[@Kur0den0010@koliosky.com](https://koliosky.com/`kur0den0010)まで DM でもリプライでもいいのでください
+質問とか？あれば[@Kur0den0010@koliosky.com](https://koliosky.com/@Kur0den0010)まで DM でもリプライでもいいのでください
 
 できる限り答えます
