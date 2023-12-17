@@ -19,4 +19,5 @@ Python3.11.4 で動作確認済み
 9. 多分これで使えます
 
 質問とか？あれば[@Kur0den0010@koliosky.com](https://koliosky.com/`kur0den0010)まで DM でもリプライでもいいのでください
+
 できる限り答えます
