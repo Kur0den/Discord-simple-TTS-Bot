@@ -18,6 +18,21 @@ Python3.11.4 で動作確認済み
 8. Discord 上で`(config.jsonで指定したprefix) jsk sync (サーバーID)`を実行してコマンドを同期します
 9. 多分これで使えます
 
+## コマンド
+
+-   `[設定したPrefix] ping`
+    Ping です
+    生存確認ができます
+-   `[設定したPrefix] jishaku`
+    Jishaku が使えます
+    くわしくは[ここ](https://jishaku.readthedocs.io/en/latest/)をみてね
+-   `/connect`
+    実行した VC のチャンネルに接続してそのチャンネルに投稿されたメッセージを読み上げます
+-   `/stop`
+    読み上げを全部止めます
+-   `/disconnect`
+    VC から切断します
+
 質問とか？あれば[@Kur0den0010@koliosky.com](https://koliosky.com/`kur0den0010)まで DM でもリプライでもいいのでください
 
 できる限り答えます
