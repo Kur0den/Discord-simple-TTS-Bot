@@ -161,3 +161,6 @@ cython_debug/
 
 # config用ファイル
 config.json
+
+# TTS用ファイル
+.tts_file/
