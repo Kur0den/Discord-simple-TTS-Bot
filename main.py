@@ -27,26 +27,67 @@ bot = commands.Bot(
 )
 
 
+# ping用のcogクラス
+class Ping(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.command()
+    async def ping(self, ctx):
+        await ctx.send("pong")
+
+
+def setup(bot):
+    bot.add_cog(Ping(bot))
+
+
+# TTS用のcogクラス
+class Tts(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+        self.voice_client = None
+
+    @app_commands.command(name="connect", description="VCに接続します")
+    @app_commands.guilds(config["guild_id"])
+    @app_commands.guild_only()
+    async def connect(self, interaction: discord.Interaction):
+        if interaction.channel is discord.VoiceChannel:
+            await interaction.response.send_message("VCじゃないです")
+            return
+        else:
+            await interaction.response.send_message("VCです")
+
+
 @bot.event
 async def on_ready():
     # 起動時に実行する処理
 
-    # 設定ファイルから読み上げ用のフォルダを取得
-    bot.tts_folder = config["tts_folder"]
-
+    # 読み上げ用の音声ファイルを保存するフォルダを作成
     try:
-        shutil.rmtree(bot.tts_folder)
+        shutil.rmtree(config["tts_folder"])
     except FileNotFoundError:
         pass
     finally:
-        os.mkdir(bot.tts_folder)
+        os.mkdir(config["tts_folder"])
+
+    # cogをロード
+    await bot.add_cog(Ping(bot))
+    await bot.add_cog(Tts(bot))
+
+    # jishakuをロード
+    await bot.load_extension("jishaku")
     print("Bot is ready.")
 
 
-# @app_commands.command(name="VCJoin", description="VCに参加して読み上げを開始します")
-# @app_commands.guild_only(guild_ids=[config["guild_id"]])
-# async def VC_join(interaction: discord.Interaction):
-#     await interaction.response.send_message("VCに参加します")
+@bot.event
+async def on_command_error(ctx, error):
+    embed = discord.Embed(
+        title="Error",
+        description=error,
+        color=discord.Color.red(),
+        timestamp=ctx.message.created_at,
+    )
+    await ctx.send(embed=embed)
 
 
 bot.run(config["token"])
