@@ -2,5 +2,6 @@
     "token": "TOKEN",
     "prefix": "!",
     "guild_id": GUILD_ID_HERE,
-    "tts_folder": "VOICE_FILE_SAVE_PATH_HERE(example: ".tts_file")"
+    "tts_folder": "VOICE_FILE_SAVE_PATH_HERE(example: ".tts_file")",
+    "read_limit": 100
 }
