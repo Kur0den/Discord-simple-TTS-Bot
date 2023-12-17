@@ -1,0 +1,5 @@
+{
+    "token": "TOKEN",
+    "prefix": "!",
+    "guild_id": GUILD_ID_HERE
+}
