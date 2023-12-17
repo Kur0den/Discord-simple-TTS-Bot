@@ -8,7 +8,7 @@ Python3.11.4 で動作確認済み
 ## 使い方
 
 1. Discord の Bot のトークンを発行して使用するサーバーに招待します
-2. `git clone url`でこのリポジトリを clone します
+2. `git clone https://github.com/Kur0den/Discord-simple-TTS-Bot`でこのリポジトリを clone します
 3. `config.json.example`を`config.json`に変更して中の値（トークン・サーバー ID・必要であれば読み上げ文字上限）を編集します
 4. venv なりなんなりで`Python3.11.xx`の環境を用意します
 5. 用意した環境で`((py/pyhthon) -m )pip install -r requirements.txt`を実行して依存関係をインストールします
