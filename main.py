@@ -37,10 +37,6 @@ class Ping(commands.Cog):
         await ctx.send("pong")
 
 
-def setup(bot):
-    bot.add_cog(Ping(bot))
-
-
 # TTS用のcogクラス
 class Tts(commands.Cog):
     def __init__(self, bot):
@@ -51,7 +47,7 @@ class Tts(commands.Cog):
     @app_commands.guilds(config["guild_id"])
     @app_commands.guild_only()
     async def connect(self, interaction: discord.Interaction):
-        if interaction.channel is discord.VoiceChannel:
+        if interaction.channel.type is not discord.ChannelType.voice:
             await interaction.response.send_message("VCじゃないです")
             return
         else:
