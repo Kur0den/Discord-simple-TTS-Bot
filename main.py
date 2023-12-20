@@ -163,17 +163,19 @@ class Tts(commands.Cog):
     async def on_voice_state_update(self, member, before, after):
         # botがVCに接続している場合のみ処理を行う
         if self.voice_client is not None:
-            # botが接続しているVCにメンバーが接続した場合はメンバーの名前を読み上げる
-            if self.voice_client.channel is after.channel:
-                if member.bot:
-                    return
-                content = f"{member.display_name}がVCに接続しました"
-                await self.tts(content)
-            # botが接続しているVCからメンバーが切断した場合はメンバーの名前を読み上げる
-            elif self.voice_client.channel is before.channel:
-                if member.bot:
-                    return
-                content = f"{member.display_name}がVCから切断しました"
+            # 入退出以外を弾く
+            if before.channel is not after.channel:
+                # botが接続しているVCにメンバーが接続した場合はメンバーの名前を読み上げる
+                if self.voice_client.channel is after.channel:
+                    if member.bot:
+                        return
+                    content = f"{member.display_name}がVCに接続しました"
+                    await self.tts(content)
+                # botが接続しているVCからメンバーが切断した場合はメンバーの名前を読み上げる
+                elif self.voice_client.channel is before.channel:
+                    if member.bot:
+                        return
+                    content = f"{member.display_name}がVCから切断しました"
                 await self.tts(content)
 
     # 読み上げ処理
