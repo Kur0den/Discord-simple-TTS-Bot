@@ -217,10 +217,10 @@ async def on_ready():
     try:
         await bot.add_cog(Ping(bot))
         await bot.add_cog(Tts(bot))
+        # jishakuをロード
+        await bot.load_extention("jishaku")
     except discord.errors.ClientException:
         print("Cog load Error")
-    # jishakuをロード
-    await bot.load_extension("jishaku")
     print("Bot is ready.")
 
 
