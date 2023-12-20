@@ -195,7 +195,7 @@ class Tts(commands.Cog):
             lang="ja",
         )
         name = str(uuid4())
-        g_tts.save(f"{config['tts_folder']}/{name}.mp3")
+        await asyncio.to_thread(g_tts.save, f"{config['tts_folder']}/{name}.mp3")
         self.voice_client.play(
             discord.FFmpegPCMAudio(f"./{config['tts_folder']}/{name}.mp3")
         )
