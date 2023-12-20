@@ -214,9 +214,11 @@ async def on_ready():
         os.mkdir(config["tts_folder"])
 
     # cogをロード
-    await bot.add_cog(Ping(bot))
-    await bot.add_cog(Tts(bot))
-
+    try:
+        await bot.add_cog(Ping(bot))
+        await bot.add_cog(Tts(bot))
+    except discord.errors.ClientException:
+        print("Cog load Error")
     # jishakuをロード
     await bot.load_extension("jishaku")
     print("Bot is ready.")
