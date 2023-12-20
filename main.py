@@ -185,15 +185,15 @@ class Tts(commands.Cog):
             while self.voice_client.is_playing():
                 await asyncio.sleep(0.1)
             # 読み上げ停止時にバグるかもしれないのでtryで囲む
-            content = self.message_queue.popleft()
-        try:
-            g_tts = gTTS(
-                text=content,
-                tld="jp",
-                lang="ja",
-            )
-        except IndexError:
-            return
+            try:
+                content = self.message_queue.popleft()
+            except IndexError:
+                return
+        g_tts = gTTS(
+            text=content,
+            tld="jp",
+            lang="ja",
+        )
         name = str(uuid4())
         g_tts.save(f"{config['tts_folder']}/{name}.mp3")
         self.voice_client.play(
